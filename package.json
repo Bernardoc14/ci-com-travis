@@ -5,7 +5,8 @@
   "homepage": "https://bernardoc14.github.io/ci-com-travis/",
   "dependencies": {
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "web-vitals": "3.5.2"
   },
   "scripts": {
     "start": "echo 'Starting development server is not needed for CI/CD'",
