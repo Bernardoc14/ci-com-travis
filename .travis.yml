@@ -1,15 +1,37 @@
+# .travis.yml - Configuração CI/CD para React App
+
+# 1. Configuração do Ambiente
 language: node_js
 node_js:
-  - "stable"
+  - "lts/*" # Recomenda-se usar 'lts/*' (Long Term Support) em vez de 'stable'
 cache:
   directories:
     - node_modules
 
+# 2. Gatilhos (Triggers)
 branches:
   only:
-    - main
-    - dev
+    - main # Branch principal
+    - dev  # Branch de desenvolvimento
+
+# 3. Etapa de Instalação e Build (CI)
+# O Travis executa automaticamente 'npm install' antes do 'script'. 
+# Vamos explicitá-la e remover a seção 'install' vazia.
+install:
+  - npm install # Garante que todas as dependências estejam instaladas
 
 script:
-  - npm start
-  - npm run build
+  # 🛑 REMOVE 'npm start'! O objetivo é apenas compilar.
+  - npm run build # Este comando cria a pasta 'build'
+
+# 4. Configuração de Deploy (CD) - Adicionada para o GitHub Pages
+deploy:
+  provider: pages           # Provedor do GitHub Pages
+  skip_cleanup: true        # Não limpa a pasta de build antes do deploy
+  local-dir: build          # A pasta gerada pelo 'npm run build'
+  github-token: $GITHUB_TOKEN # Usa o Token de Acesso Pessoal (PAT) SEGURO da variável de ambiente
+  target-branch: gh-pages   # Branch para onde o conteúdo compilado será enviado
+  email: seu-email@exemplo.com # ⬅️ Substitua pelo seu email do GitHub
+  name: Seu Nome de Usuário    # ⬅️ Substitua pelo seu nome de usuário
+  on:
+    branch: main # Só faz deploy quando a branch 'main' é atualizada
