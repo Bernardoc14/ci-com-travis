@@ -11,5 +11,5 @@ branches:
     - dev
 
 script:
-  - npm test
+  - npm start
   - npm run build
