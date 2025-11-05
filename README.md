@@ -1,3 +1,6 @@
+[![Build Status](https://app.travis-ci.com/Bernardoc14/ci-com-travis.svg?token=s8RvVXEJ7Qv3UcQZCDZ2&branch=main)](https://app.travis-ci.com/Bernardoc14/ci-com-travis)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
